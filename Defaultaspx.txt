@@ -1,0 +1,30 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Pizza Napoli</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h1>Pizza Napoli Order Form</h1>
+        <h3>Pick a Size</h3>
+        <asp:CheckBoxList ID="CBLSize" runat="server">
+
+        </asp:CheckBoxList>
+
+        <h3>Pick Your Toppings</h3>
+        <asp:CheckBoxList ID="CBLToppings" runat="server" Height="33px">
+
+        </asp:CheckBoxList>
+
+
+        <asp:Button ID="Button1" runat="server" Text="Submit" OnClick="Button1_Click" />
+       <!-- <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>-->
+
+    </div>
+    </form>
+</body>
+</html>

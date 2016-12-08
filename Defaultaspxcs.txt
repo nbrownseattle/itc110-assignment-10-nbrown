@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if(!IsPostBack)
+        {
+            PopulateSize();
+            PopulateToppings();
+        }
+    }
+    protected void PopulateSize()
+    {
+        string[] size = { "Small", "Medium", "Large" };
+        CBLSize.DataSource = size;
+        CBLSize.DataBind();
+    }
+
+    protected void PopulateToppings()
+    {
+        string[] toppings = { "prosciutto di parma", "arugula", "shaved reggiano", "eggplant", "mushrooms" };
+        CBLToppings.DataSource = toppings;
+        CBLToppings.DataBind();
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        MealOrder meal = new MealOrder();
+        // Label1.Text = "";
+        foreach (ListItem item in CBLToppings.Items)
+        {
+            if (item.Selected)
+            {
+                meal.AddToppings(item.Text);               
+            }
+
+        }//end foreach
+        foreach (ListItem item in CBLSize.Items)
+        {
+            if (item.Selected)
+            {
+                meal.AddSize(item.Text);
+            }
+        }//end foreach
+        Session["Meal"] = meal;
+        Response.Redirect("Receipt.aspx");
+        
+    }//end button
+}
